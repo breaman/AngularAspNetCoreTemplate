@@ -1,0 +1,23 @@
+{
+    "$schema": "http://json.schemastore.org/template",
+    "author": "Michael Stokesbary",
+    "classifications": [
+        "Web", "Library", "Angular"
+    ],
+    "name": "Breaman Angular AspNetCore Template",
+    "identity": "Breaman.Templates.AngularAspNetCore",
+    "groupIdentity": "Breaman.Templates",
+    "shortName": "breamanAngular",
+    "tags": {
+        "language": "C#, Typescript",
+        "type": "project"
+    },
+    "sourceName": "AngularAspNetCoreTemplate",
+    "preferNameDirectory": true,
+    "sources":[{
+        "modifiers": [{
+            "exclude": ["Readme.md", "**/obj/**/*", "**/bin/**/*", "**/node_modules/**/*"],
+            "include": ["**/_models/**/*", "**/_services/**/*"]
+        }]
+    }]
+}
