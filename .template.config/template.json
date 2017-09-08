@@ -16,8 +16,7 @@
     "preferNameDirectory": true,
     "sources":[{
         "modifiers": [{
-            "exclude": ["Readme.md", "**/obj/**/*", "**/bin/**/*", "**/node_modules/**/*"],
-            "include": ["**/_models/**/*", "**/_services/**/*"]
+            "exclude": ["Readme.md", "**/obj/**/*", "**/bin/**/*", "**/node_modules/**/*", "**/dist/**/*", "**/.git/**/*"]
         }]
     }]
 }
