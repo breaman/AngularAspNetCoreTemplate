@@ -7,17 +7,15 @@ using AngularAspNetCoreTemplate.Domain.Abstract;
 
 namespace AngularAspNetCoreTemplate.Domain.Concrete
 {
-    public class RepositoryBase<T> : IRepository<T> where T : class, IEntity
+    public class RepositoryBase<T> : IRepository<T> where T : class, IEntityBase
     {
         public ApplicationDbContext DbContext { get; }
-        private DbSet<T> DbSet;
-
+        public DbSet<T> DbSet { get; }
         public RepositoryBase(ApplicationDbContext dbContext)
         {
             DbContext = dbContext;
-            DbSet = dbContext.Set<T>();
+            DbSet = DbContext.Set<T>();
         }
-
         public IQueryable<T> All
         {
             get
@@ -29,16 +27,24 @@ namespace AngularAspNetCoreTemplate.Domain.Concrete
         public IQueryable<T> AllIncluding(params Expression<Func<T, object>>[] includeProperties)
         {
             IQueryable<T> query = DbSet.AsQueryable();
+
             foreach (var includeProperty in includeProperties)
             {
                 query = query.Include(includeProperty);
             }
+
             return query;
+        }
+
+        public async void DeleteAsync(int id)
+        {
+            T dbSet = await FindAsync(id);
+            DbSet.Remove(dbSet);
         }
 
         public async Task<T> FindAsync(int id)
         {
-            return await DbSet.FindAsync(id);
+            return await DbSet.SingleOrDefaultAsync(t => t.Id == id);
         }
 
         public void InsertOrUpdate(T entity)
@@ -49,14 +55,9 @@ namespace AngularAspNetCoreTemplate.Domain.Concrete
             }
             else
             {
-                DbSet.Update(entity);
+                DbSet.Attach(entity);
+                DbContext.Entry(entity).State = EntityState.Modified;
             }
-        }
-
-        public async void Delete(int id)
-        {
-            T entity = await FindAsync(id);
-            DbSet.Remove(entity);
         }
 
         public async Task<int> SaveAsync()
