@@ -23,7 +23,7 @@ Optionally have yarn installed
 npm install -g yarn
 ```
 
-After creating project, make sure to navigate into the src\&lt;projectName&gt;.Web project and run
+After creating project, make sure to navigate into the src\\&lt;projectName&gt;.Web project and run
 ```
 dotnet restore - to get the nuget packages pulled in correctly
 yarn (or npm install) - to get the node_modules installed
