@@ -19,8 +19,10 @@
                 "enabled": true,
                 "args": "${auto-detect-url}",
                 "windows": {
-                    "command": "cmd.exe",
-                    "args": "/C start ${auto-detect-url}"
+                    //"command": "cmd.exe",
+                    //"args": "/C start ${auto-detect-url}"
+                    "command": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+                    "args": "${auto-detect-url} -incognito"
                 },
                 "osx": {
                     "command": "open"
