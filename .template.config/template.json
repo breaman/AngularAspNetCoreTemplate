@@ -6,17 +6,16 @@
     ],
     "name": "Breaman Angular AspNetCore Template",
     "identity": "Breaman.Templates.AngularAspNetCore",
-    "groupIdentity": "Breaman.Templates",
     "shortName": "breamanAngular",
     "tags": {
-        "language": "C#, Typescript",
+        "language": "C#",
         "type": "project"
     },
     "sourceName": "AngularAspNetCoreTemplate",
     "preferNameDirectory": true,
     "sources":[{
         "modifiers": [{
-            "exclude": ["Readme.md", "**/obj/**/*", "**/bin/**/*", "**/node_modules/**/*", "**/dist/**/*", "**/.git/**/*"]
+            "exclude": ["Readme.md", "**/*.sqlite", "**/obj/**/*", "**/bin/**/*", "**/node_modules/**/*", "**/dist/**/*", "**/.git/**/*"]
         }]
     }]
 }
